@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="80dp">
+
+
+        <EditText
+            style="@style/styleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/name"
+            android:layout_marginTop="30dp" />
+
+
+        <EditText
+            style="@style/styleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            style="@style/styleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            style="@style/styleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/confirm_password"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            style="@style/styleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/cellphone"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            style="@style/styleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/favorite_sport"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            style="@style/styleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/register"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

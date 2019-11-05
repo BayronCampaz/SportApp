@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">SportApp</string>
+    <string name="email">Correo electronico</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Ingresar</string>
+    <string name="register">Registrarse</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="cellphone">Celular</string>
+    <string name="favorite_sport">Deporte favorito</string>
+    <string name="login_with_facebook">Ingresar con facebook</string>
+
+
 </resources>
