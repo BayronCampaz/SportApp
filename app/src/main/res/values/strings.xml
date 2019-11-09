@@ -1,4 +1,6 @@
 <resources>
+    <string name="facebook_app_id">1185801408296887</string>
+    <string name="fb_login_protocol_scheme">fb1185801408296887</string>
     <string name="app_name">SportApp</string>
     <string name="email">Correo electronico</string>
     <string name="password">Contraseña</string>
@@ -10,6 +12,7 @@
     <string name="cellphone">Celular</string>
     <string name="favorite_sport">Deporte favorito</string>
     <string name="login_with_facebook">Ingresar con facebook</string>
+    <string name="not_user_yet">¿No eres usuario aun? "\n" Registrate</string>
 
 
 </resources>

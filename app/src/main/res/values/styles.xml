@@ -16,6 +16,11 @@
         <item name="android:fontFamily">@font/font_family</item>
     </style>
 
+    <style name="styleTextView" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/font_family</item>
+    </style>
+
     <style name="styleButton" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/bg_button</item>
         <item name="android:textColor">@android:color/white</item>
