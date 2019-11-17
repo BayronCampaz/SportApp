@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,7 +26,7 @@ public class SignupActivity extends AppCompatActivity {
     private EditText passwordEt;
     private EditText repasswordEt;
     private EditText cellphoneEt;
-    private EditText favoriteSportEt;
+    private Spinner favoriteSportSp;
     private Button registerBtn;
 
 
@@ -40,7 +42,12 @@ public class SignupActivity extends AppCompatActivity {
         passwordEt = findViewById(R.id.register_password_et);
         repasswordEt = findViewById(R.id.register_repassword_et);
         cellphoneEt = findViewById(R.id.register_cellphone_et);
-        favoriteSportEt = findViewById(R.id.register_sport_et);
+        favoriteSportSp = findViewById(R.id.sports_spinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.sports_array, R.layout.custom_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        favoriteSportSp.setAdapter(adapter);
 
         registerBtn = findViewById(R.id.register_btn);
 
@@ -77,7 +84,7 @@ public class SignupActivity extends AppCompatActivity {
                                 emailEt.getText().toString().trim(),
                                 passwordEt.getText().toString().trim(),
                                 cellphoneEt.getText().toString(),
-                                favoriteSportEt.getText().toString()
+                                favoriteSportSp.getTransitionName()
                         );
 
                         db.getReference().child("users").child(user.getUid()).setValue(user);

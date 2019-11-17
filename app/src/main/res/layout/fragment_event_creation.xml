@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/background4">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/new_event"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        style="@style/styleTextView">
+
+    </TextView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp">
+
+
+            <EditText
+                android:id="@+id/event_name_et"
+                style="@style/styleEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/name"
+                android:layout_marginTop="20dp" />
+
+
+            <EditText
+                android:id="@+id/event_description_et"
+                style="@style/styleEditText"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="@string/description"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="20dp"
+                android:gravity="top"/>
+
+            <EditText
+                android:id="@+id/number_people_et"
+                style="@style/styleEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/numberPeople"
+                android:inputType="number"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/event_money_et"
+                style="@style/styleEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/money"
+                android:layout_marginTop="20dp"/>
+
+            <Spinner
+                android:id="@+id/event_sports_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    style="@style/styleEditText"
+                    android:id="@+id/date_picker_et"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="6"
+                    android:layout_height="50dp"
+                    android:inputType="date"
+                    android:hint="@string/format_date"
+                    />
+
+                <ImageButton
+                    android:id="@+id/event_date_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_event"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@color/customRed"
+                    android:tint="@android:color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    style="@style/styleEditText"
+                    android:id="@+id/time_picker_et"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="6"
+                    android:layout_height="50dp"
+                    android:inputType="time"
+                    android:hint="@string/format_hour"
+                    />
+
+                <ImageButton
+                    android:id="@+id/time_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_schedule"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@color/customRed"
+                    android:tint="@android:color/white"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/add_location_btn"
+                style="@style/styleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:text="@string/add_location"/>
+
+            <Button
+                android:id="@+id/create_event_btn"
+                style="@style/styleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:text="@string/create"
+                android:background="@color/customRed"
+                android:tint="@android:color/white"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

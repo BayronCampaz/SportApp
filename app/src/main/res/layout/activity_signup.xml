@@ -2,7 +2,7 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/background"
+    android:background="@drawable/background4"
     android:orientation="vertical"
     android:gravity="center">
 
@@ -58,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="@string/confirm_password"
+            android:inputType="textPassword"
             android:layout_marginTop="20dp"/>
 
         <EditText
@@ -68,13 +69,12 @@
             android:hint="@string/cellphone"
             android:layout_marginTop="20dp"/>
 
-        <EditText
-            android:id="@+id/register_sport_et"
-            style="@style/styleEditText"
+
+        <Spinner
+            android:id="@+id/sports_spinner"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="@string/favorite_sport"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="15dp"/>
 
         <Button
             android:id="@+id/register_btn"

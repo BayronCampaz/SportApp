@@ -6,9 +6,7 @@
     <LinearLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="60dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
     </LinearLayout>
@@ -21,28 +19,41 @@
         android:background="@color/customRed">
 
         <ImageButton
+            android:id="@+id/home_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/ic_home"
-            android:background="@color/customRed"
-            android:tint="@android:color/white"/>
+            android:background="@android:color/white"
+            android:tint="@android:color/black"/>
 
         <ImageButton
+            android:id="@+id/event_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/ic_event_available"
-            android:background="@color/customRed"
-            android:tint="@android:color/white"/>
+            android:background="@android:color/white"
+            android:tint="@android:color/black"/>
 
         <ImageButton
+            android:id="@+id/add_event_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_add_circle"
+            android:background="@android:color/white"
+            android:tint="@android:color/black"/>
+
+
+        <ImageButton
+            android:id="@+id/profile_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/ic_person"
-            android:background="@color/customRed"
-            android:tint="@android:color/white"/>
+            android:background="@android:color/white"
+            android:tint="@android:color/black"/>
 
 
     </LinearLayout>

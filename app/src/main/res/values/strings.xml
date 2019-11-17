@@ -12,7 +12,29 @@
     <string name="cellphone">Celular</string>
     <string name="favorite_sport">Deporte favorito</string>
     <string name="login_with_facebook">Ingresar con facebook</string>
-    <string name="not_user_yet">¿No eres usuario aun? "\n" Registrate</string>
+    <string name="new_event">Nuevo Evento</string>
+    <string name="description">Descripcion</string>
+    <string name="numberPeople">Número de personas</string>
+    <string name="money">Costo</string>
+    <string name="sport">Deporte</string>
+    <string name="date">Fecha y hora</string>
+    <string name="add_location">Agregar ubicacion</string>
+    <string name="create">Crear evento</string>
+    <string name="format_date">dd/mm/yyyy</string>
+    <string name="format_hour">hh:mm</string>
+    <string name="not_user_yet">¿No eres usuario aún? "\n" Registrate</string>
+    <string-array name="sports_array">
+        <item>Fútbol</item>
+        <item>Fútbol Sala</item>
+        <item>Voleibol</item>
+        <item>Baloncesto</item>
+        <item>Tenis</item>
+        <item>Balonmano</item>
+        <item>Beisbol</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
