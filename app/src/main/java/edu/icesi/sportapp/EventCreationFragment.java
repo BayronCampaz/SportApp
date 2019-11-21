@@ -2,12 +2,8 @@ package edu.icesi.sportapp;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +16,9 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -49,6 +48,7 @@ public class EventCreationFragment extends Fragment {
     private Spinner sportSp;
     private Button addLocationBtn;
     private Button createEventBtn;
+    private LatLng latLng;
 
     FirebaseDatabase db;
     FirebaseAuth auth;
@@ -143,22 +143,22 @@ public class EventCreationFragment extends Fragment {
             }
 
             if (numberPeopleEt.getText().toString().trim().isEmpty()) {
-                Toast.makeText(container.getContext(), "El campo de nombre esta vacio", Toast.LENGTH_LONG).show();
+                Toast.makeText(container.getContext(), "El campo de número de personas esta vacio", Toast.LENGTH_LONG).show();
                 return;
             }
 
             if (moneyEt.getText().toString().trim().isEmpty()) {
-                Toast.makeText(container.getContext(), "El campo de nombre esta vacio", Toast.LENGTH_LONG).show();
+                Toast.makeText(container.getContext(), "El campo de costo por persona esta vacio", Toast.LENGTH_LONG).show();
                 return;
             }
 
             if (dateEt.getText().toString().trim().isEmpty()) {
-                Toast.makeText(container.getContext(), "El campo de nombre esta vacio", Toast.LENGTH_LONG).show();
+                Toast.makeText(container.getContext(), "El campo de fecha esta vacio", Toast.LENGTH_LONG).show();
                 return;
             }
 
             if (timeEt.getText().toString().trim().isEmpty()) {
-                Toast.makeText(container.getContext(), "El campo de nombre esta vacio", Toast.LENGTH_LONG).show();
+                Toast.makeText(container.getContext(), "El campo de dia esta vacio", Toast.LENGTH_LONG).show();
                 return;
             }
 
@@ -166,7 +166,10 @@ public class EventCreationFragment extends Fragment {
 
         });
 
-
+        addLocationBtn.setOnClickListener(view1 -> {
+            Intent intent = new Intent(container.getContext(), MapsActivity.class);
+            startActivityForResult(intent, 11);
+        });
 
 
         return view;

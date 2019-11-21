@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onError(FacebookException error) {
                 Log.e(TAG, "facebook:onError", error);
-               // updateUI(null);
+                // updateUI(null);
             }
         });
     }
