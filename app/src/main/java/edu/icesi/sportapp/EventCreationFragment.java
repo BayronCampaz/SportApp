@@ -162,6 +162,7 @@ public class EventCreationFragment extends Fragment {
                 return;
             }
 
+            
 
         });
 

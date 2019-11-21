@@ -9,7 +9,10 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="50dp">
+        android:src="@drawable/success2"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
+        >
 
     </ImageView>
 
@@ -19,6 +22,18 @@
         android:orientation="vertical"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/txttitle"
+            android:text="SportApp"
+            android:textSize="28dp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/cardview_light_background"
+            android:layout_marginBottom="20dp"
+            />
 
 
 

@@ -7,4 +7,5 @@
     <color name="bgColorEditText">#33000000</color>
     <color name="grayHint">#9C9C9C</color>
     <color name="customRed">#b41b21</color>
+    <color name="black">#393939</color>
 </resources>

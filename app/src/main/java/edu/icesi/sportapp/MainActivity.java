@@ -9,8 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.io.File;
+import java.util.Calendar;
+
+import edu.icesi.sportapp.model.entity.EventSport;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,6 +28,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EventCreationFragment eventCreationFragment;
     ProfileFragment profileFragment;
     FirebaseAuth auth;
+
+    private ListView listView;
+    private FeedAdapter adapter;
+    private File photo;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +58,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showHomeFragment();
 
 
+
+
         auth = FirebaseAuth.getInstance();
+
+
+        listView = findViewById(R.id.events);
+        adapter = new FeedAdapter();
+        listView.setAdapter(adapter);
+
+       // adapter.addElement(new EventSport(R.drawable.background,"Torneo futbolin", "Es un torneo especial",8,2000,"Futbol", Calendar.getInstance().getTime()));
+        //adapter.addElement(new EventSport(R.drawable.background,"Torneo futbolin", "Es un torneo especial",8,2000,"Futbol", Calendar.getInstance().getTime()));
+
 
         if (auth.getCurrentUser() == null) {
             Intent intent = new Intent(this, LoginActivity.class);
