@@ -2,8 +2,6 @@ package edu.icesi.sportapp.model.entity;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import java.util.Date;
-
 public class EventSport {
 
 
@@ -14,13 +12,13 @@ public class EventSport {
     private int numberPeople;
     private double price;
     private String sport;
-    private Date date;
+    private long date;
     private LatLng latLng;
 
     public EventSport() {
     }
 
-    public EventSport(String uid, int photo, String name, String description, int numberPeople, double price, String sport, Date date, LatLng latLng) {
+    public EventSport(String uid, int photo, String name, String description, int numberPeople, double price, String sport, long date, LatLng latLng) {
         this.uid = uid;
         this.photo = photo;
         this.name = name;
@@ -88,11 +86,11 @@ public class EventSport {
         this.sport = sport;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

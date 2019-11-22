@@ -1,8 +1,5 @@
 package edu.icesi.sportapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -10,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -84,7 +84,7 @@ public class SignupActivity extends AppCompatActivity {
                                 emailEt.getText().toString().trim(),
                                 passwordEt.getText().toString().trim(),
                                 cellphoneEt.getText().toString(),
-                                favoriteSportSp.getTransitionName()
+                                favoriteSportSp.getSelectedItem().toString()
                         );
 
                         db.getReference().child("users").child(user.getUid()).setValue(user);

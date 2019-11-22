@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
@@ -169,14 +170,23 @@ public class EventCreationFragment extends Fragment {
                 String description = descriptionEt.getText().toString();
                 int numberPeople = Integer.parseInt(numberPeopleEt.getText().toString());
                 double price = Double.parseDouble(moneyEt.getText().toString());
-                String sport = sportSp.getTransitionName();
+                String sport = sportSp.getSelectedItem().toString();
                 String stringDate = dateEt.getText().toString() + " " + timeEt.getText().toString();
                 DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                Date date = sourceFormat.parse(stringDate);
+                Date dateAndTime = sourceFormat.parse(stringDate);
+                long date = dateAndTime.getTime();
 
                 EventSport event = new EventSport(uid, photo, name, description, numberPeople, price, sport, date, latLng );
                 db.getReference().child("sportEvents").child(auth.getCurrentUser().getUid())
                         .child(uid).setValue(event);
+
+                Toast toast = Toast.makeText(container.getContext(), "El evento ha sido creado exitosamente", Toast.LENGTH_SHORT);
+                toast.show();
+
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, new FeedFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
 
 
             }catch (Exception e){
