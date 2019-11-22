@@ -1,12 +1,13 @@
 package edu.icesi.sportapp.model.entity;
 
-import java.util.Calendar;
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Date;
-import java.util.Timer;
 
 public class EventSport {
 
 
+    private String uid;
     private int photo;
     private String name;
     private String description;
@@ -14,14 +15,13 @@ public class EventSport {
     private double price;
     private String sport;
     private Date date;
-    //private Calendar starthour;
-    //private double locationLat;
-    //private double locationLong;
+    private LatLng latLng;
 
     public EventSport() {
     }
 
-    public EventSport(int photo, String name, String description, int numberPeople, double price, String sport, Date date) {
+    public EventSport(String uid, int photo, String name, String description, int numberPeople, double price, String sport, Date date, LatLng latLng) {
+        this.uid = uid;
         this.photo = photo;
         this.name = name;
         this.description = description;
@@ -29,6 +29,15 @@ public class EventSport {
         this.price = price;
         this.sport = sport;
         this.date = date;
+        this.latLng = latLng;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public int getPhoto() {
@@ -85,5 +94,13 @@ public class EventSport {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public LatLng getLatLng() {
+        return latLng;
+    }
+
+    public void setLatLng(LatLng latLng) {
+        this.latLng = latLng;
     }
 }

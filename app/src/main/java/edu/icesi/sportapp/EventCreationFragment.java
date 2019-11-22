@@ -16,13 +16,19 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
+import edu.icesi.sportapp.model.entity.EventSport;
 
 public class EventCreationFragment extends Fragment {
 
@@ -72,10 +78,12 @@ public class EventCreationFragment extends Fragment {
         timeEt = view.findViewById(R.id.time_picker_et);
         datePickerBtn = view.findViewById(R.id.event_date_btn);
         timePickerBtn = view.findViewById(R.id.time_btn);
-        sportSp = view.findViewById(R.id.sports_spinner);
         addLocationBtn = view.findViewById(R.id.add_location_btn);
         createEventBtn = view.findViewById(R.id.create_event_btn);
         sportSp = view.findViewById(R.id.event_sports_spinner);
+
+        auth = FirebaseAuth.getInstance();
+        db = FirebaseDatabase.getInstance();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(container.getContext(),
                 R.array.sports_array, R.layout.custom_spinner_item);
@@ -114,15 +122,8 @@ public class EventCreationFragment extends Fragment {
                     String formattedHour =  (hourOfDay < 10)? String.valueOf("0" + hourOfDay) : String.valueOf(hourOfDay);
                     //Formateo el minuto obtenido: antepone el 0 si son menores de 10
                     String formattedMinutes = (minute < 10)? String.valueOf("0" + minute):String.valueOf(minute);
-                    //Obtengo el valor a.m. o p.m., dependiendo de la selección del usuario
-                    String AM_PM;
-                    if(hourOfDay < 12) {
-                        AM_PM = "a.m.";
-                    } else {
-                        AM_PM = "p.m.";
-                    }
                     //Muestro la hora con el formato deseado
-                    timeEt.setText(formattedHour + ":" + formattedMinutes + " " + AM_PM);
+                    timeEt.setText(formattedHour + ":" + formattedMinutes);
                 }
                 //Estos valores deben ir en ese orden
                 //Al colocar en false se muestra en formato 12 horas y true en formato 24 horas
@@ -161,18 +162,45 @@ public class EventCreationFragment extends Fragment {
                 Toast.makeText(container.getContext(), "El campo de dia esta vacio", Toast.LENGTH_LONG).show();
                 return;
             }
+            try{
+                String uid =  db.getReference().child("sportEvents").child(auth.getCurrentUser().getUid()).push().getKey();
+                int photo = 0;
+                String name = nameEt.getText().toString();
+                String description = descriptionEt.getText().toString();
+                int numberPeople = Integer.parseInt(numberPeopleEt.getText().toString());
+                double price = Double.parseDouble(moneyEt.getText().toString());
+                String sport = sportSp.getTransitionName();
+                String stringDate = dateEt.getText().toString() + " " + timeEt.getText().toString();
+                DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                Date date = sourceFormat.parse(stringDate);
 
-            
+                EventSport event = new EventSport(uid, photo, name, description, numberPeople, price, sport, date, latLng );
+                db.getReference().child("sportEvents").child(auth.getCurrentUser().getUid())
+                        .child(uid).setValue(event);
+
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         });
 
         addLocationBtn.setOnClickListener(view1 -> {
             Intent intent = new Intent(container.getContext(), MapsActivity.class);
             startActivityForResult(intent, 11);
+
         });
 
 
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == 11 && resultCode == MainActivity.RESULT_OK){
+            latLng =  data.getExtras().getParcelable("location");
+
+        }
     }
 
 }

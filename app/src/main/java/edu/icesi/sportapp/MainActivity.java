@@ -1,22 +1,20 @@
 package edu.icesi.sportapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
-import java.util.Calendar;
-
-import edu.icesi.sportapp.model.entity.EventSport;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,8 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ProfileFragment profileFragment;
     FirebaseAuth auth;
 
-    private ListView listView;
-    private FeedAdapter adapter;
     private File photo;
 
 
@@ -56,17 +52,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         showHomeFragment();
-
-
-
-
         auth = FirebaseAuth.getInstance();
 
-
-        listView = findViewById(R.id.events);
-        adapter = new FeedAdapter();
-        listView.setAdapter(adapter);
-
+        ActivityCompat.requestPermissions(this, new String[]{
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+        }, 11);
        // adapter.addElement(new EventSport(R.drawable.background,"Torneo futbolin", "Es un torneo especial",8,2000,"Futbol", Calendar.getInstance().getTime()));
         //adapter.addElement(new EventSport(R.drawable.background,"Torneo futbolin", "Es un torneo especial",8,2000,"Futbol", Calendar.getInstance().getTime()));
 
