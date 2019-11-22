@@ -1,14 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background4"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        style="@style/styleTextViewWhite"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="Perfil" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/perfil_name"
+        style="@style/styleTextViewWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="Nombre Apellido"
+        android:gravity="center"
+        android:textSize="35sp"/>
+
+    <TextView
+        style="@style/styleTextViewWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:text="@string/email"
+        android:textSize="20sp"
+        android:paddingEnd="10dp"/>
+
+    <EditText
+        android:id="@+id/perfil_mail_et"
+        style="@style/styleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="30dp"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        style="@style/styleTextViewWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:text="@string/cellphone"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:id="@+id/perfil_cellphone_et"
+        style="@style/styleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/cellphone"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="30dp"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        style="@style/styleTextViewWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:text="@string/favorite_sport"
+        android:textSize="20sp"
+        />
+
+    <Spinner
+        android:id="@+id/perfil_sports_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"/>
+
+    <Button
+        android:id="@+id/edit_info"
+        android:layout_marginTop="30dp"
+        style="@style/styleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_info"></Button>
+
+    <Button
+        android:id="@+id/change_password"
+        android:layout_marginTop="25dp"
+        style="@style/styleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/change_password"></Button>
+
+
+
+</LinearLayout>

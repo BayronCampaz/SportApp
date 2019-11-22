@@ -22,6 +22,8 @@
     <string name="create">Crear evento</string>
     <string name="format_date">dd/mm/yyyy</string>
     <string name="format_hour">hh:mm</string>
+    <string name="change_password">Cambiar contraseña</string>
+    <string name="edit_info">Editar información</string>
     <string name="not_user_yet">¿No eres usuario aún? "\n" Registrate</string>
     <string-array name="sports_array">
         <item>Fútbol</item>

@@ -30,6 +30,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import edu.icesi.sportapp.model.entity.EventSport;
+import edu.icesi.sportapp.model.remote.DatabaseConstants;
 
 public class EventCreationFragment extends Fragment {
 
@@ -164,7 +165,7 @@ public class EventCreationFragment extends Fragment {
                 return;
             }
             try{
-                String uid =  db.getReference().child("sportEvents").child(auth.getCurrentUser().getUid()).push().getKey();
+                String uid =  db.getReference().child(DatabaseConstants.EVENTS).child(auth.getCurrentUser().getUid()).push().getKey();
                 int photo = 0;
                 String name = nameEt.getText().toString();
                 String description = descriptionEt.getText().toString();

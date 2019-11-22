@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import edu.icesi.sportapp.model.entity.User;
+import edu.icesi.sportapp.model.remote.DatabaseConstants;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -87,7 +88,7 @@ public class SignupActivity extends AppCompatActivity {
                                 favoriteSportSp.getSelectedItem().toString()
                         );
 
-                        db.getReference().child("users").child(user.getUid()).setValue(user);
+                        db.getReference().child(DatabaseConstants.USERS).child(user.getUid()).setValue(user);
                         Intent i = new Intent(SignupActivity.this, MainActivity.class);
                         startActivity(i);
                         finish();
