@@ -1,5 +1,6 @@
 package edu.icesi.sportapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.collection.LLRBNode;
 
 import edu.icesi.sportapp.model.entity.User;
 import edu.icesi.sportapp.model.remote.DatabaseConstants;
@@ -32,6 +34,7 @@ public class ProfileFragment extends Fragment {
     private Spinner sportSp;
     private Button editInfoBtn;
     private Button changePasswordBtn;
+    private Button acceptChangesBtn;
 
     FirebaseAuth auth;
     FirebaseDatabase db;
@@ -49,6 +52,7 @@ public class ProfileFragment extends Fragment {
         sportSp = view.findViewById(R.id.perfil_sports_spinner);
         editInfoBtn = view.findViewById(R.id.edit_info);
         changePasswordBtn = view.findViewById(R.id.change_password);
+        acceptChangesBtn = view.findViewById(R.id.accept_changes_btn);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
@@ -91,33 +95,37 @@ public class ProfileFragment extends Fragment {
         });
 
         editInfoBtn.setOnClickListener(view1 -> {
-            if(editInfoBtn.getText().equals(R.string.edit_info)){
-                emailEt.setEnabled(true);
-                cellphoneEt.setEnabled(true);
-                sportSp.setEnabled(true);
-                changePasswordBtn.setText(R.string.accept_changes);
-            }
-
-            if(editInfoBtn.getText().equals(R.string.accept_changes)){
-                emailEt.setEnabled(false);
-                cellphoneEt.setEnabled(false);
-                sportSp.setEnabled(false);
-
-
-                User newUser = new User(auth.getCurrentUser().getUid(),
-                        nameTv.getText().toString(),
-                        emailEt.getText().toString(),
-                        password[0],
-                        cellphoneEt.getText().toString(),
-                        sportSp.getSelectedItem().toString());
-
-                db.getReference().child(DatabaseConstants.USERS).child(newUser.getUid()).setValue(newUser);
-                changePasswordBtn.setText(R.string.edit_info);
-                Toast toast = Toast.makeText(container.getContext(),"Se ha cambiado los datos correctamente", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-
+            emailEt.setEnabled(true);
+            emailEt.setTextColor(Color.WHITE);
+            cellphoneEt.setEnabled(true);
+            cellphoneEt.setTextColor(Color.WHITE);
+            sportSp.setEnabled(true);
+            acceptChangesBtn.setVisibility(View.VISIBLE);
+            editInfoBtn.setVisibility(View.GONE);
         });
+
+        acceptChangesBtn.setOnClickListener(view1 -> {
+            emailEt.setEnabled(false);
+            emailEt.setTextColor(getResources().getColor(R.color.grayHint));
+            cellphoneEt.setEnabled(false);
+            cellphoneEt.setTextColor(getResources().getColor(R.color.grayHint));
+            sportSp.setEnabled(false);
+
+
+            User newUser = new User(auth.getCurrentUser().getUid(),
+                    nameTv.getText().toString(),
+                    emailEt.getText().toString(),
+                    password[0],
+                    cellphoneEt.getText().toString(),
+                    sportSp.getSelectedItem().toString());
+
+            db.getReference().child(DatabaseConstants.USERS).child(newUser.getUid()).setValue(newUser);
+            editInfoBtn.setVisibility(View.VISIBLE);
+            acceptChangesBtn.setVisibility(View.GONE);
+            Toast toast = Toast.makeText(container.getContext(),"Se ha cambiado los datos correctamente", Toast.LENGTH_SHORT);
+            toast.show();
+        });
+
 
         return view;
     }
