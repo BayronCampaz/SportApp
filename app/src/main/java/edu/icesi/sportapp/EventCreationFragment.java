@@ -168,6 +168,7 @@ public class EventCreationFragment extends Fragment {
                 String uid =  db.getReference().child(DatabaseConstants.EVENTS).child(auth.getCurrentUser().getUid()).push().getKey();
                 int photo = 0;
                 String name = nameEt.getText().toString();
+                String ownerID = auth.getCurrentUser().getUid();
                 String description = descriptionEt.getText().toString();
                 int numberPeople = Integer.parseInt(numberPeopleEt.getText().toString());
                 double price = Double.parseDouble(moneyEt.getText().toString());
@@ -176,8 +177,9 @@ public class EventCreationFragment extends Fragment {
                 DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                 Date dateAndTime = sourceFormat.parse(stringDate);
                 long date = dateAndTime.getTime();
+                String status = EventSport.ACTIVE;
 
-                EventSport event = new EventSport(uid, photo, name, description, numberPeople, price, sport, date, latLng );
+                EventSport event = new EventSport(uid, ownerID, photo, name, description, numberPeople, price, sport, date, latLng, status);
                 db.getReference().child("sportEvents").child(auth.getCurrentUser().getUid())
                         .child(uid).setValue(event);
 

@@ -4,8 +4,12 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class EventSport {
 
+    public static final String ACTIVE = "Activo";
+    public static final String ENDED = "Terminado";
+
 
     private String uid;
+    private String ownerID;
     private int photo;
     private String name;
     private String description;
@@ -14,12 +18,14 @@ public class EventSport {
     private String sport;
     private long date;
     private LatLng latLng;
+    private String status;
 
     public EventSport() {
     }
 
-    public EventSport(String uid, int photo, String name, String description, int numberPeople, double price, String sport, long date, LatLng latLng) {
+    public EventSport(String uid, String ownerID, int photo, String name, String description, int numberPeople, double price, String sport, long date, LatLng latLng, String status) {
         this.uid = uid;
+        this.ownerID = ownerID;
         this.photo = photo;
         this.name = name;
         this.description = description;
@@ -28,6 +34,7 @@ public class EventSport {
         this.sport = sport;
         this.date = date;
         this.latLng = latLng;
+        this.status = status;
     }
 
     public String getUid() {
@@ -100,5 +107,21 @@ public class EventSport {
 
     public void setLatLng(LatLng latLng) {
         this.latLng = latLng;
+    }
+
+    public String getOwnerID() {
+        return ownerID;
+    }
+
+    public void setOwnerID(String ownerID) {
+        this.ownerID = ownerID;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
