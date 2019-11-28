@@ -1,4 +1,4 @@
-package edu.icesi.sportapp;
+package edu.icesi.sportapp.control.fragments;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -29,6 +29,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import edu.icesi.sportapp.MainActivity;
+import edu.icesi.sportapp.MapsActivity;
+import edu.icesi.sportapp.R;
+import edu.icesi.sportapp.control.fragments.FeedFragment;
 import edu.icesi.sportapp.model.entity.EventSport;
 import edu.icesi.sportapp.model.remote.DatabaseConstants;
 

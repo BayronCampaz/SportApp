@@ -1,4 +1,4 @@
-package edu.icesi.sportapp;
+package edu.icesi.sportapp.control.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+
+import edu.icesi.sportapp.R;
 
 public class FeedFragment extends Fragment {
 

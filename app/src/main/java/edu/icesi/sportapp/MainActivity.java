@@ -16,15 +16,20 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
 
+import edu.icesi.sportapp.control.fragments.EventCreationFragment;
+import edu.icesi.sportapp.control.fragments.ProfileFragment;
+import edu.icesi.sportapp.control.fragments.RequestedEventFragment;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private LinearLayout fragmentsContainer;
     private ImageButton homeBtn;
-    private ImageButton eventBtn;
+    private ImageButton requestedEventBtn;
     private ImageButton addEventBtn;
     private ImageButton profileBtn;
-    EventCreationFragment eventCreationFragment;
-    ProfileFragment profileFragment;
+    private EventCreationFragment eventCreationFragment;
+    private ProfileFragment profileFragment;
+    private RequestedEventFragment requestedEventFragment;
     FirebaseAuth auth;
 
     private File photo;
@@ -38,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         fragmentsContainer = findViewById(R.id.fragment_container);
         homeBtn = findViewById(R.id.home_btn);
-        eventBtn = findViewById(R.id.event_btn);
+        requestedEventBtn = findViewById(R.id.requested_event_btn);
         addEventBtn = findViewById(R.id.add_event_btn);
         profileBtn = findViewById(R.id.profile_btn);
 
@@ -46,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         profileFragment = new ProfileFragment();
 
         homeBtn.setOnClickListener(this);
-        eventBtn.setOnClickListener(this);
+        requestedEventBtn.setOnClickListener(this);
         addEventBtn.setOnClickListener(this);
         profileBtn.setOnClickListener(this);
 
@@ -83,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //ft.replace(R.id.fragment_container, editFragment);
         } else if( view.equals(addEventBtn) ){
             ft.replace(R.id.fragment_container, eventCreationFragment);
+        } else if( view.equals(requestedEventBtn) ){
+            ft.replace(R.id.fragment_container, requestedEventFragment );
         }
         ft.commit();
     }

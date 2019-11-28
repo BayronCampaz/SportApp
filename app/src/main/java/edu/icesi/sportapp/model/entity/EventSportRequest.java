@@ -1,6 +1,6 @@
 package edu.icesi.sportapp.model.entity;
 
-public class SportRequest {
+public class EventSportRequest {
 
     public static final String ACCEPTED = "Aceptado";
     public static final String PENDING = "Pendiente";
@@ -11,10 +11,10 @@ public class SportRequest {
     private String eventID;
     private String status;
 
-    public SportRequest() {
+    public EventSportRequest() {
     }
 
-    public SportRequest(String uid, String userID, String eventID, String status) {
+    public EventSportRequest(String uid, String userID, String eventID, String status) {
         this.uid = uid;
         this.userID = userID;
         this.eventID = eventID;

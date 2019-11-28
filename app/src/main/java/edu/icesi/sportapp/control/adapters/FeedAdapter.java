@@ -1,4 +1,4 @@
-package edu.icesi.sportapp;
+package edu.icesi.sportapp.control.adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,6 +16,7 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import edu.icesi.sportapp.R;
 import edu.icesi.sportapp.model.entity.EventSport;
 
 public class FeedAdapter extends BaseAdapter {

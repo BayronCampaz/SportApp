@@ -1,4 +1,4 @@
-package edu.icesi.sportapp;
+package edu.icesi.sportapp.control.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.collection.LLRBNode;
 
+import edu.icesi.sportapp.R;
 import edu.icesi.sportapp.model.entity.User;
 import edu.icesi.sportapp.model.remote.DatabaseConstants;
 
