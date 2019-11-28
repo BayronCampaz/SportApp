@@ -26,6 +26,7 @@
     <string name="edit_info">Editar información</string>
     <string name="accept_changes">Aceptar cambios</string>
     <string name="request_to_events">Solicitudes a eventos</string>
+    <string name="requests_list">Listado de solicitudes</string>
 
     <string name="not_user_yet">¿No eres usuario aún? "\n" Registrate</string>
     <string-array name="sports_array">

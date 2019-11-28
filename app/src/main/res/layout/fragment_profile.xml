@@ -19,7 +19,7 @@
         style="@style/styleTextViewWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:paddingEnd="10dp"
         android:textSize="20sp"
         android:gravity="center"
         android:text="Perfil" />
@@ -29,9 +29,10 @@
         style="@style/styleTextViewWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre Apellido"
+        android:text=" "
         android:gravity="center"
-        android:textSize="35sp"/>
+        android:textSize="35sp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         style="@style/styleTextViewWhite"
@@ -82,8 +83,7 @@
         android:id="@+id/perfil_sports_spinner"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:textColor="@color/grayHint"
-        android:layout_marginTop="15dp" />
+        android:textColor="@color/grayHint" />
 
     <Button
 
