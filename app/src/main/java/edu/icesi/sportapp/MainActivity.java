@@ -20,6 +20,7 @@ import java.io.File;
 
 import edu.icesi.sportapp.control.fragments.EventCreationFragment;
 import edu.icesi.sportapp.control.fragments.EventNotificationsFragment;
+import edu.icesi.sportapp.control.fragments.FeedFragment;
 import edu.icesi.sportapp.control.fragments.ProfileFragment;
 import edu.icesi.sportapp.control.fragments.RequestedEventFragment;
 
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EventCreationFragment eventCreationFragment;
     private ProfileFragment profileFragment;
     private RequestedEventFragment requestedEventFragment;
+    private FeedFragment feedFragment;
     private EventNotificationsFragment eventNotificationsFragment;
     FirebaseAuth auth;
 
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         requestedEventFragment = new RequestedEventFragment();
         profileFragment = new ProfileFragment();
         eventNotificationsFragment = new EventNotificationsFragment();
+        feedFragment= new FeedFragment();
 
 
         homeBtn.setOnClickListener(this);
@@ -99,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if( view.equals(homeBtn) ){
             setNormalColorToButtons();
             setColorRedToButton(homeBtn);
-            //ft.replace(R.id.fragment_container, editFragment);
+            ft.replace(R.id.fragment_container,feedFragment);
 
         } else if( view.equals(addEventBtn) ){
             setNormalColorToButtons();

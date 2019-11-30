@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.collection.LLRBNode;
 
 import edu.icesi.sportapp.R;
+import edu.icesi.sportapp.model.entity.EventSport;
 import edu.icesi.sportapp.model.entity.User;
 import edu.icesi.sportapp.model.remote.DatabaseConstants;
 
@@ -36,6 +37,8 @@ public class ProfileFragment extends Fragment {
     private Button editInfoBtn;
     private Button changePasswordBtn;
     private Button acceptChangesBtn;
+
+    private ArrayAdapter<EventSport> eventSportArrayAdapter;
 
     FirebaseAuth auth;
     FirebaseDatabase db;

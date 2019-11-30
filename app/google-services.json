@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "368790588362",
+    "firebase_url": "https://sportapp-eb08b.firebaseio.com",
+    "project_id": "sportapp-eb08b",
+    "storage_bucket": "sportapp-eb08b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368790588362:android:58b91e23e53fc035bc9d33",
+        "android_client_info": {
+          "package_name": "edu.icesi.sportapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368790588362-oi9q0hd7caprebu1mmpped1e9bcnnnrk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.icesi.sportapp",
+            "certificate_hash": "6d31ce47121d44533ce7317729fbdc5d9676ecf4"
+          }
+        },
+        {
+          "client_id": "368790588362-k5g480oep5ou8kb0d3fq4bi17d3cfanr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfAup8J50_ieWNYhYWBcbrrEwV9Pz-D5k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368790588362-k5g480oep5ou8kb0d3fq4bi17d3cfanr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
