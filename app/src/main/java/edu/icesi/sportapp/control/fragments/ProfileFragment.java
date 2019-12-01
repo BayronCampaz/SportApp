@@ -1,5 +1,6 @@
 package edu.icesi.sportapp.control.fragments;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,7 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.collection.LLRBNode;
 
+import edu.icesi.sportapp.LoginActivity;
 import edu.icesi.sportapp.R;
+import edu.icesi.sportapp.model.entity.EventSport;
 import edu.icesi.sportapp.model.entity.User;
 import edu.icesi.sportapp.model.remote.DatabaseConstants;
 
@@ -36,6 +39,9 @@ public class ProfileFragment extends Fragment {
     private Button editInfoBtn;
     private Button changePasswordBtn;
     private Button acceptChangesBtn;
+    private  Button signout;
+
+    private ArrayAdapter<EventSport> eventSportArrayAdapter;
 
     FirebaseAuth auth;
     FirebaseDatabase db;
@@ -54,6 +60,7 @@ public class ProfileFragment extends Fragment {
         editInfoBtn = view.findViewById(R.id.edit_info);
         changePasswordBtn = view.findViewById(R.id.change_password);
         acceptChangesBtn = view.findViewById(R.id.accept_changes_btn);
+        signout=view.findViewById(R.id.cerrar_sesión);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
@@ -93,6 +100,16 @@ public class ProfileFragment extends Fragment {
 
         changePasswordBtn.setOnClickListener(view1 -> {
 
+        });
+
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.signOut();
+               Intent i = new Intent(getContext(), LoginActivity.class);
+               startActivity(i);
+              // finish();
+            }
         });
 
         editInfoBtn.setOnClickListener(view1 -> {

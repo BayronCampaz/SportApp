@@ -3,7 +3,10 @@ package edu.icesi.sportapp.control.fragments;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +27,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import edu.icesi.sportapp.MainActivity;
 import edu.icesi.sportapp.MapsActivity;
@@ -61,6 +67,7 @@ public class EventCreationFragment extends Fragment {
     private Button addLocationBtn;
     private Button createEventBtn;
     private LatLng latLng;
+
 
     FirebaseDatabase db;
     FirebaseAuth auth;
@@ -182,8 +189,30 @@ public class EventCreationFragment extends Fragment {
                 Date dateAndTime = sourceFormat.parse(stringDate);
                 long date = dateAndTime.getTime();
                 String status = EventSport.ACTIVE;
+                double lat=latLng.latitude;
+                double longi=latLng.longitude;
+                String addre="";
 
-                EventSport event = new EventSport(uid, ownerID, photo, name, description, numberPeople, price, sport, date, latLng, status);
+                String email=auth.getCurrentUser().getEmail();
+
+
+                try {
+                    Geocoder geocoder;
+                    geocoder = new Geocoder(getContext(), Locale.getDefault());
+                    List<Address> addresses = null;
+                    addresses = geocoder.getFromLocation(lat,longi, 1);
+                    Address bestMatch = (addresses.isEmpty() ? null : addresses.get(0));
+
+                    addre= bestMatch.getAddressLine(0);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+                EventSport event = new EventSport(uid, ownerID, photo, name, description, numberPeople, price, sport, date, lat,longi,addre,email, status);
                 db.getReference().child("sportEvents").child(auth.getCurrentUser().getUid())
                         .child(uid).setValue(event);
 
@@ -216,6 +245,7 @@ public class EventCreationFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 11 && resultCode == MainActivity.RESULT_OK){
             latLng =  data.getExtras().getParcelable("location");
+
 
         }
     }
