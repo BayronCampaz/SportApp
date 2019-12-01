@@ -76,7 +76,7 @@ public class InfoEvent extends AppCompatActivity {
             eventAddresstxt.setText("Dirección:  "+eventSport.getAddress());
             eventDatetxt.setText("Fecha:  "+sdf.format(eventSport.getDate()));
             eventHourtxt.setText("Hora:  "+sdf2.format(eventSport.getDate()));
-            price.setText("Precio:  $"+String.valueOf("Precio:  "+eventSport.getPrice()).replaceAll("[0]*$", "").replaceAll(".$", ""));
+            price.setText("Precio:  $"+String.valueOf(eventSport.getPrice()).replaceAll("[0]*$", "").replaceAll(".$", ""));
             emailResponsabile.setText("Email responsable:  "+eventSport.getEmailResponsible());
 
 
@@ -89,6 +89,8 @@ public class InfoEvent extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(),MapsActivity.class);
                 i.putExtra("evento",finalEventSport);
                 startActivity(i);
+
+
 
             }
         });
