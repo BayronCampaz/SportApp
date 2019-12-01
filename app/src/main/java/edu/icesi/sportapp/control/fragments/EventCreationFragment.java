@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -192,6 +193,9 @@ public class EventCreationFragment extends Fragment {
                 double longi=latLng.longitude;
                 String addre="";
 
+                String email=auth.getCurrentUser().getEmail();
+
+
                 try {
                     Geocoder geocoder;
                     geocoder = new Geocoder(getContext(), Locale.getDefault());
@@ -208,7 +212,7 @@ public class EventCreationFragment extends Fragment {
 
 
 
-                EventSport event = new EventSport(uid, ownerID, photo, name, description, numberPeople, price, sport, date, lat,longi,addre, status);
+                EventSport event = new EventSport(uid, ownerID, photo, name, description, numberPeople, price, sport, date, lat,longi,addre,email, status);
                 db.getReference().child("sportEvents").child(auth.getCurrentUser().getUid())
                         .child(uid).setValue(event);
 

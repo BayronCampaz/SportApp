@@ -2,7 +2,9 @@ package edu.icesi.sportapp.model.entity;
 
 import com.google.android.gms.maps.model.LatLng;
 
-public class EventSport {
+import java.io.Serializable;
+
+public class EventSport implements Serializable {
 
     public static final String ACTIVE = "Activo";
     public static final String ENDED = "Terminado";
@@ -23,11 +25,13 @@ public class EventSport {
     private double longitude;
     private String address;
 
+   private String emailResponsible;
+
 
     public EventSport() {
     }
 
-    public EventSport(String uid, String ownerID, int photo, String name, String description, int numberPeople, double price, String sport, long date, double latitude,double longitude,String address, String status) {
+    public EventSport(String uid, String ownerID, int photo, String name, String description, int numberPeople, double price, String sport, long date, double latitude,double longitude,String address,String email, String status) {
         this.uid = uid;
         this.ownerID = ownerID;
         this.photo = photo;
@@ -41,6 +45,9 @@ public class EventSport {
         this.latitude=latitude;
         this.longitude=longitude;
         this.address=address;
+       // this.nameR=nameR;
+
+        this.emailResponsible=email;
         this.status = status;
     }
 
@@ -120,6 +127,23 @@ public class EventSport {
         return longitude;
     }
 
+    public String getEmailResponsible() {
+        return emailResponsible;
+    }
+
+    public void setEmailResponsible(String emailResponsible) {
+        this.emailResponsible = emailResponsible;
+    }
+
+    /**
+    public String getNameR() {
+        return nameR;
+    }
+
+    public void setNameR(String nameR) {
+        this.nameR = nameR;
+    }
+*/
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }

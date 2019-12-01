@@ -71,6 +71,7 @@
         android:inputType="textEmailAddress"
         android:layout_marginBottom="20dp"/>
 
+
     <TextView
         style="@style/styleTextViewWhite"
         android:layout_width="match_parent"
@@ -106,13 +107,32 @@
             android:text="@string/accept_changes"
             android:visibility="gone"/>
 
+
     <Button
         android:id="@+id/change_password"
         android:layout_marginTop="20dp"
         style="@style/styleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/change_password"></Button>
+        android:text="@string/change_password"/>
+
+        <Button
+
+            android:id="@+id/cerrar_sesión"
+            android:layout_marginTop="20dp"
+            style="@style/styleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="40dp"
+            android:visibility="invisible"
+            />
+
 
     </LinearLayout>
 

@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -27,6 +28,7 @@ import edu.icesi.sportapp.R;
 import edu.icesi.sportapp.control.adapters.FeedAdapter;
 import edu.icesi.sportapp.model.entity.EventSport;
 import edu.icesi.sportapp.model.entity.LatLong;
+import edu.icesi.sportapp.model.entity.User;
 import edu.icesi.sportapp.model.remote.DatabaseConstants;
 
 public class FeedFragment extends Fragment {
@@ -56,55 +58,63 @@ public class FeedFragment extends Fragment {
 
         db.getReference()
                 .child("sportEvents")
-                .child(auth.getCurrentUser().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot child :dataSnapshot.getChildren()){
 
+                            for (DataSnapshot e :child.getChildren()){
+                                EventSport event = e.getValue(EventSport.class);
 
-                        for(DataSnapshot child : dataSnapshot.getChildren()){
+                                switch(event.getSport()) {
+                                    case "Fútbol":
+                                        event.setPhoto(R.drawable.futbol);
+                                        break;
+                                    case "Baloncesto":
+                                        event.setPhoto(R.drawable.baloncesto);
+                                        break;
 
-                            EventSport event = child.getValue(EventSport.class);
+                                    case "Fútbol Sala":
+                                        event.setPhoto(R.drawable.futsal);
+                                        break;
+                                    case "Voleibol":
+                                        event.setPhoto(R.drawable.voleibol);
+                                        break;
+                                    case "Tenis":
+                                        event.setPhoto(R.drawable.tenis);
+                                        break;
+                                    case "Balonmano":
+                                        event.setPhoto(R.drawable.balonmano);
+                                        break;
+                                    case "Beisbol":
+                                        event.setPhoto(R.drawable.beisbol);
+                                        break;
 
-                            switch(event.getSport()) {
-                                case "Fútbol":
-                                    event.setPhoto(R.drawable.futbol);
-                                    break;
-                                case "Baloncesto":
-                                    event.setPhoto(R.drawable.baloncesto);
-                                    break;
+                                }
 
-                                case "Fútbol Sala":
-                                    event.setPhoto(R.drawable.futsal);
-                                    break;
-                                case "Voleibol":
-                                    event.setPhoto(R.drawable.voleibol);
-                                    break;
-                                case "Tenis":
-                                    event.setPhoto(R.drawable.tenis);
-                                    break;
-                                case "Balonmano":
-                                    event.setPhoto(R.drawable.balonmano);
-                                    break;
-                                case "Beisbol":
-                                    event.setPhoto(R.drawable.beisbol);
-                                    break;
+                                adapter.addElement(event);
+
 
                             }
 
-                            adapter.addElement(event);
-                        }
 
+                        }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
+
                     }
                 });
 
 
+
+
+
         return view;
     }
+
+
 
 }
