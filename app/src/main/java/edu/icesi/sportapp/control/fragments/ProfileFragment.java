@@ -60,7 +60,7 @@ public class ProfileFragment extends Fragment {
         editInfoBtn = view.findViewById(R.id.edit_info);
         changePasswordBtn = view.findViewById(R.id.change_password);
         acceptChangesBtn = view.findViewById(R.id.accept_changes_btn);
-        signout=view.findViewById(R.id.cerrar_sesión);
+        signout = view.findViewById(R.id.cerrar_sesión);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();

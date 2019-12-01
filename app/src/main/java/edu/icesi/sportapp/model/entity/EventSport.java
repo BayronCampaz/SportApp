@@ -3,6 +3,7 @@ package edu.icesi.sportapp.model.entity;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class EventSport implements Serializable {
 
@@ -24,8 +25,8 @@ public class EventSport implements Serializable {
     private double latitude;
     private double longitude;
     private String address;
-
-   private String emailResponsible;
+    private ArrayList<EventSportRequest> requests;
+    private String emailResponsible;
 
 
     public EventSport() {
@@ -46,9 +47,9 @@ public class EventSport implements Serializable {
         this.longitude=longitude;
         this.address=address;
        // this.nameR=nameR;
-
         this.emailResponsible=email;
         this.status = status;
+        requests = new ArrayList<>();
     }
 
     public String getUid() {
@@ -182,5 +183,13 @@ public class EventSport implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public ArrayList<EventSportRequest> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(ArrayList<EventSportRequest> requests) {
+        this.requests = requests;
     }
 }

@@ -62,7 +62,6 @@ public class FeedFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for(DataSnapshot child :dataSnapshot.getChildren()){
-
                             for (DataSnapshot e :child.getChildren()){
                                 EventSport event = e.getValue(EventSport.class);
 
@@ -93,11 +92,7 @@ public class FeedFragment extends Fragment {
                                 }
 
                                 adapter.addElement(event);
-
-
                             }
-
-
                         }
                     }
 
@@ -107,10 +102,6 @@ public class FeedFragment extends Fragment {
 
                     }
                 });
-
-
-
-
 
         return view;
     }

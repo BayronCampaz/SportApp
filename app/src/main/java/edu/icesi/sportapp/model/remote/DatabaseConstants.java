@@ -4,4 +4,5 @@ public class DatabaseConstants {
 
     public static final String USERS = "users";
     public static final String EVENTS = "sportEvents";
+    public static final String REQUESTS = "requests";
 }

@@ -20,6 +20,9 @@ import android.widget.Toast;
 
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,13 +35,20 @@ import edu.icesi.sportapp.MapsActivity;
 import edu.icesi.sportapp.R;
 import edu.icesi.sportapp.control.fragments.FeedFragment;
 import edu.icesi.sportapp.model.entity.EventSport;
+import edu.icesi.sportapp.model.entity.EventSportRequest;
+import edu.icesi.sportapp.model.remote.DatabaseConstants;
 
 public class FeedAdapter extends BaseAdapter {
 
     private ArrayList <EventSport> objects;
 
+    FirebaseDatabase db;
+    FirebaseAuth auth;
+
     public FeedAdapter() {
         objects= new ArrayList<EventSport>();
+        db = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -55,6 +65,7 @@ public class FeedAdapter extends BaseAdapter {
     public long getItemId(int i) {
         return i;
     }
+
 
     @Override
     public View getView(int position, View convertView, final ViewGroup parent) {
@@ -92,13 +103,35 @@ public class FeedAdapter extends BaseAdapter {
         date.setText("Fecha:  "+sdf.format(data.getDate()));
         emailRes.setText("Email responsable:  "+data.getEmailResponsible());
 
+        EventSport event = objects.get(position);
 
+        if(event.getOwnerID().equals(auth.getCurrentUser().getUid())){
+            emailRes.setText("Este es un evento tuyo");
+            btnAttend.setVisibility(View.GONE);
+        }
 
         btnAttend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                String uid =  db.getReference().child(DatabaseConstants.REQUESTS).child(auth.getCurrentUser().getUid()).push().getKey();
+                EventSportRequest request = new EventSportRequest(uid,
+                        auth.getCurrentUser().getUid(),
+                        event.getUid(),
+                        event.getOwnerID(),
+                        EventSportRequest.PENDING);
 
+                db.getReference().child(DatabaseConstants.REQUESTS).child(auth.getCurrentUser().getUid())
+                        .child(uid).setValue(request);
+
+                ArrayList<EventSportRequest> requests = event.getRequests();
+                requests.add(request);
+                event.setRequests(requests);
+
+                db.getReference().child(DatabaseConstants.EVENTS).child(event.getUid()).setValue(event);
+
+                Toast toast = Toast.makeText(parent.getContext(), "Enviaste tu solicitud al evento", Toast.LENGTH_SHORT);
+                toast.show();
 
 
             }
@@ -107,18 +140,11 @@ public class FeedAdapter extends BaseAdapter {
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 Intent i = new Intent(view.getContext(), InfoEvent.class);
                 i.putExtra("event",data);
                 view.getContext().startActivity(i);
-
-
-
             }
         });
-
-
 
         return v;
 

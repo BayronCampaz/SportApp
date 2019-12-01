@@ -9,17 +9,22 @@ public class EventSportRequest {
     private String uid;
     private String userID;
     private String eventID;
+    private String ownerEventID;
     private String status;
+
+
 
     public EventSportRequest() {
     }
 
-    public EventSportRequest(String uid, String userID, String eventID, String status) {
+    public EventSportRequest(String uid, String userID, String eventID, String ownerEventID, String status) {
         this.uid = uid;
         this.userID = userID;
         this.eventID = eventID;
+        this.ownerEventID = ownerEventID;
         this.status = status;
     }
+
 
     public String getUid() {
         return uid;
@@ -43,6 +48,14 @@ public class EventSportRequest {
 
     public void setEventID(String eventID) {
         this.eventID = eventID;
+    }
+
+    public String getOwnerEventID() {
+        return ownerEventID;
+    }
+
+    public void setOwnerEventID(String ownerEventID) {
+        this.ownerEventID = ownerEventID;
     }
 
     public String getStatus() {

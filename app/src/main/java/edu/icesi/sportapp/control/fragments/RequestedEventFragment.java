@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,14 +12,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import edu.icesi.sportapp.R;
 import edu.icesi.sportapp.control.adapters.RequestedEventAdapter;
+import edu.icesi.sportapp.model.entity.EventSportRequest;
+import edu.icesi.sportapp.model.remote.DatabaseConstants;
 
 
 public class RequestedEventFragment extends Fragment {
 
     private ListView listRequestedEvents;
     RequestedEventAdapter adapter;
+
+    FirebaseDatabase db;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,8 +40,33 @@ public class RequestedEventFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_requested_event, container, false);
         listRequestedEvents = view.findViewById(R.id.list_requested_events);
-
         adapter = new RequestedEventAdapter();
+        listRequestedEvents.setAdapter(adapter);
+
+        db = FirebaseDatabase.getInstance();
+
+        db.getReference()
+                .child(DatabaseConstants.REQUESTS)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot child :dataSnapshot.getChildren()){
+
+                            for (DataSnapshot e :child.getChildren()){
+                                EventSportRequest event = e.getValue(EventSportRequest.class);
+
+                                adapter.addRequestedEvent(event);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+
+                    }
+                });
+
         listRequestedEvents.setAdapter(adapter);
 
         return view;

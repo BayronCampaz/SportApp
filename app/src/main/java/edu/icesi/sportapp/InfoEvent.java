@@ -26,7 +26,6 @@ public class InfoEvent extends AppCompatActivity {
     private TextView eventHourtxt;
     private TextView price;
     private TextView emailResponsabile;
-
     private Button butAttend;
     private Button butMap;
     private Button butBack;
