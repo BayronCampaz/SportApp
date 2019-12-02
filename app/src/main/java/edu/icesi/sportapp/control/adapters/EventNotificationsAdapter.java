@@ -97,6 +97,7 @@ public class EventNotificationsAdapter extends BaseAdapter {
 
         checkBtn.setOnClickListener(view1 -> {
 
+
         });
 
         rejectBtn.setOnClickListener(view1 -> {
