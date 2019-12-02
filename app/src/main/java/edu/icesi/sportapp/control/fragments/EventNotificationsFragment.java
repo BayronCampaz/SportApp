@@ -54,9 +54,12 @@ public class EventNotificationsFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for(DataSnapshot child :dataSnapshot.getChildren()){
                                 EventSport event = child.getValue(EventSport.class);
-                                for(EventSportRequest eventSR: event.getRequests()){
-                                    adapter.addNotificationEvent(eventSR);
+                                if(event.getRequests()!= null){
+                                    for(EventSportRequest eventSR: event.getRequests()){
+                                        adapter.addNotificationEvent(eventSR);
+                                    }
                                 }
+
 
 
                         }

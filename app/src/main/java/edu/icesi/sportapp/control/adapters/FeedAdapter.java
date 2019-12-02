@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -125,10 +126,13 @@ public class FeedAdapter extends BaseAdapter {
                         .child(uid).setValue(request);
 
                 ArrayList<EventSportRequest> requests = event.getRequests();
+                if(requests == null){
+                    requests = new ArrayList<EventSportRequest>();
+                }
                 requests.add(request);
                 event.setRequests(requests);
-
-                db.getReference().child(DatabaseConstants.EVENTS).child(event.getUid()).setValue(event);
+                Log.e(">>>>>>>>", event.getAddress());
+                db.getReference().child(DatabaseConstants.EVENTS).child(event.getOwnerID()).child(event.getUid()).setValue(event);
 
                 Toast toast = Toast.makeText(parent.getContext(), "Enviaste tu solicitud al evento", Toast.LENGTH_SHORT);
                 toast.show();
